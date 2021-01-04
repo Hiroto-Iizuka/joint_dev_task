@@ -64,8 +64,8 @@ def q8
   programming_languages = %w(ruby php python javascript)
 
   # 以下に回答を記載
-  programming_languages.map!{|x| x.capitalize}
-  upper_case_programming_languages = programming_languages.map{|x| x.upcase}
+  programming_languages.map!(&:capitalize)
+  upper_case_programming_languages = programming_languages.map(&:upcase)
   # 以下は変更しないで下さい
   p programming_languages
   p upper_case_programming_languages
@@ -76,7 +76,10 @@ def q9
 
   # 以下に回答を記載
   # each省略形(*処理が長い場合は{}ではなく、do~endで囲むのが自然)
-  names.each.with_index(1) do |name, i| puts "会員No.#{i} #{name}さん" end
+  # 処理が長い場合は、可読性を上げるために複数行に区切って記述する
+  names.each.with_index(1) do |name, i|
+    puts "会員No.#{i} #{name}さん"
+  end
 
   # each原型
   # names.each.with_index(1) do |name, i|
@@ -101,8 +104,11 @@ def q11
   sports = ["サッカー", "バスケ", "野球", ["フットサル", "野球"], "水泳", "ハンドボール", ["卓球", "サッカー", "ボルダリング"]]
 
   # 以下に回答を記載
+  # 処理が長い場合は、可読性を上げるために複数行に区切って記述する
   sports.flatten!.uniq!
-  sports.each.with_index(1) do |sport, i| puts "No#{i} #{sport}" end
+  sports.each.with_index(1) do |sport, i|
+    puts "No#{i} #{sport}"
+  end
 end
 
 def q12
@@ -148,8 +154,8 @@ def q16
   ]
 
   # 以下に回答を記載
-  users.each do |name, age|
-    p "私の名前は#{:name}です。年齢は#{:age}歳です。"
+  users.each do |user|
+    p "私の名前は#{user[:name]}です。年齢は#{user[:age]}歳です。"
   end
 end
 
