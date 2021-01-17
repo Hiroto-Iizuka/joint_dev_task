@@ -214,13 +214,9 @@ end
 
 class Item
   # 以下を修正して下さい
-
+  attr_reader :name
   def initialize(**params)
     @name = params[:name]
-  end
-
-  def name
-    @name
   end
 end
 
@@ -237,17 +233,20 @@ class UserQ20
     @name = params[:name]
     @age = params[:age]
   end
+end
 
 class Zoo
   # 以下に回答を記載
-  def initialize(**params)
-    @entry_fee = params[:entry_fee]
+  attr_reader :entry_fee, :infant, :children, :adult, :senior
+  def initialize(zoo)
+    @entry_fee = zoo[:entry_fee]
     @infant = @entry_fee[:infant]
     @children = @entry_fee[:children]
     @adult = @entry_fee[:adult]
     @senior = @entry_fee[:senior]
   end
-
+  
+  
   def info_entry_fee(user)
     if @age >= 0 && @age < 6
       "#{@name}さんの入場料金は#{@infant}円です。"
