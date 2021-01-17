@@ -189,7 +189,18 @@ end
 
 class UserQ18
   # 以下に回答を記載
+  def initialize(**params)
+    @name = params[:name]
+    @age = params[:age]
+  end
 
+  def introduce
+    if @age >= 20
+      "こんにちは，#{@name}と申します。宜しくお願いいたします。"
+    else
+      "はいさいまいど〜，#{@name}です！！！"
+    end
+  end
 end
 
 def q18
@@ -204,8 +215,12 @@ end
 class Item
   # 以下を修正して下さい
 
-  def initialize(name)
-    @name = name
+  def initialize(**params)
+    @name = params[:name]
+  end
+
+  def name
+    @name
   end
 end
 
@@ -217,12 +232,33 @@ end
 
 class UserQ20
   # 以下に回答を記載
-
-end
+  attr_reader :name, :age
+  def initialize(**params)
+    @name = params[:name]
+    @age = params[:age]
+  end
 
 class Zoo
   # 以下に回答を記載
+  def initialize(**params)
+    @entry_fee = params[:entry_fee]
+    @infant = @entry_fee[:infant]
+    @children = @entry_fee[:children]
+    @adult = @entry_fee[:adult]
+    @senior = @entry_fee[:senior]
+  end
 
+  def info_entry_fee(user)
+    if @age >= 0 && @age < 6
+      "#{@name}さんの入場料金は#{@infant}円です。"
+    elsif @age >= 6 && @age < 13
+      "#{@name}さんの入場料金は#{@children}円です。"
+    elsif @age >= 13 && @age < 65
+      "#{@name}さんの入場料金は#{@adult}円です。"
+    elsif @age >= 65 && @age < 121
+      "#{@name}さんの入場料金は#{@senior}円です。"
+    end
+  end
 end
 
 
