@@ -237,7 +237,6 @@ end
 
 class Zoo
   # 以下に回答を記載
-  attr_reader :entry_fee, :infant, :children, :adult, :senior
   def initialize(zoo)
     @entry_fee = zoo[:entry_fee]
     @infant = @entry_fee[:infant]
@@ -248,14 +247,14 @@ class Zoo
   
   
   def info_entry_fee(user)
-    if @age >= 0 && @age < 6
-      "#{@name}さんの入場料金は#{@infant}円です。"
-    elsif @age >= 6 && @age < 13
-      "#{@name}さんの入場料金は#{@children}円です。"
-    elsif @age >= 13 && @age < 65
-      "#{@name}さんの入場料金は#{@adult}円です。"
-    elsif @age >= 65 && @age < 121
-      "#{@name}さんの入場料金は#{@senior}円です。"
+    if user.age >= 0 && user.age < 6
+      p "#{user.name}さんの入場料金は#{@infant}円です。"
+    elsif user.age >= 6 && user.age < 13
+      p "#{user.name}さんの入場料金は#{@children}円です。"
+    elsif user.age >= 13 && user.age < 65
+      p "#{user.name}さんの入場料金は#{@adult}円です。"
+    elsif user.age >= 65 && user.age < 121
+      p "#{user.name}さんの入場料金は#{@senior}円です。"
     end
   end
 end
