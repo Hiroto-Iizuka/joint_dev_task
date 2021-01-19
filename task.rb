@@ -237,24 +237,21 @@ end
 
 class Zoo
   # 以下に回答を記載
-  def initialize(zoo)
-    @entry_fee = zoo[:entry_fee]
-    @infant = @entry_fee[:infant]
-    @children = @entry_fee[:children]
-    @adult = @entry_fee[:adult]
-    @senior = @entry_fee[:senior]
+  def initialize(**params)
+    @entry_fee = params[:entry_fee]
   end
   
   
   def info_entry_fee(user)
-    if user.age >= 0 && user.age < 6
-      p "#{user.name}さんの入場料金は#{@infant}円です。"
-    elsif user.age >= 6 && user.age < 13
-      p "#{user.name}さんの入場料金は#{@children}円です。"
-    elsif user.age >= 13 && user.age < 65
-      p "#{user.name}さんの入場料金は#{@adult}円です。"
-    elsif user.age >= 65 && user.age < 121
-      p "#{user.name}さんの入場料金は#{@senior}円です。"
+    case user.age
+    when 0 .. 5
+      p "#{user.name}さんの入場料金は#{@entry_fee[:infant]}円です。"
+    when 6 .. 12
+      p "#{user.name}さんの入場料金は#{@entry_fee[:children]}円です。"
+    when 13 .. 64
+      p "#{user.name}さんの入場料金は#{@entry_fee[:adult]}円です。"
+    when 65 .. 120
+      p "#{user.name}さんの入場料金は#{@entry_fee[:senior]}円です。"
     end
   end
 end
